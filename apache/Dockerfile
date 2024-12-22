@@ -1,6 +1,6 @@
 FROM httpd:alpine
 
-LABEL org.opencontainers.image.source="https://github.com/bitrixdock/bitrixdock"
+LABEL org.opencontainers.image.source="https://github.com/frizus/bitrixdock"
 
 RUN apk add --no-cache apache2-proxy; \
     addgroup -g 1000 -S www; \

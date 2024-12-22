@@ -1,7 +1,10 @@
 ---
 services:
     php:
-        build: ./php/${PHP_VERSION}
+        build:
+            context: ./php/${PHP_VERSION}
+            args:
+                - SITE_PATH=${SITE_PATH}
         volumes_from:
             - source
         links:
@@ -13,8 +16,7 @@ services:
         tty: true
         networks:
             - bitrixdock
-        restart: unless-stopped
-
+        restart: no
     web_server:
         build: ./${WEB_SERVER_TYPE}
         depends_on:
@@ -32,8 +34,7 @@ services:
             TZ: Europe/Moscow
         stdin_open: true
         tty: true
-        restart: unless-stopped
-
+        restart: no
     db:
         build: ./${DB_SERVER_TYPE}
         volumes:
@@ -53,8 +54,7 @@ services:
             - bitrixdock
         stdin_open: true
         tty: true
-        restart: unless-stopped
-
+        restart: no
     memcached:
         image: memcached:latest
         volumes_from:
@@ -65,8 +65,7 @@ services:
             TZ: Europe/Moscow
         stdin_open: true
         tty: true
-        restart: unless-stopped
-
+        restart: no
     adminer:
         image: dockette/adminer:full
         links:
@@ -76,12 +75,11 @@ services:
         environment:
             UPLOAD: 1024M # upload_max_filesize, post_max_size
             TZ: Europe/Moscow
-        restart: unless-stopped
+        restart: no
         stdin_open: true
         tty: true
         networks:
             - bitrixdock
-
     source:
         image: alpine:latest
         volumes:
@@ -95,12 +93,10 @@ services:
             - /etc/localtime:/etc/localtime/:ro
         networks:
             - bitrixdock
-
 volumes:
     db:
         driver: local
     cache:
         driver: local
-
 networks:
     bitrixdock:

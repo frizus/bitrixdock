@@ -1,6 +1,6 @@
 FROM mysql:8.0
 
-LABEL org.opencontainers.image.source="https://github.com/bitrixdock/bitrixdock"
+LABEL org.opencontainers.image.source="https://github.com/frizus/bitrixdock"
 
 MAINTAINER vitams
 

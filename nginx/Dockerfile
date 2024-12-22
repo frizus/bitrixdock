@@ -1,6 +1,6 @@
 FROM nginx:1.26.2
 
-LABEL org.opencontainers.image.source="https://github.com/bitrixdock/bitrixdock"
+LABEL org.opencontainers.image.source="https://github.com/frizus/bitrixdock"
 
 COPY conf/nginx.conf /etc/nginx/
 COPY conf/default.conf /etc/nginx/conf.d/
