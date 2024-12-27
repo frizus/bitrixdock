@@ -1,7 +1,5 @@
 FROM phpdockerio/php:8.4-fpm
 
-ARG SITE_PATH
-
 LABEL org.opencontainers.image.source="https://github.com/frizus/bitrixdock"
 
 RUN apt-get update \
@@ -19,14 +17,16 @@ RUN apt-get update \
     php8.4-opcache \
     php8.4-soap \
     php8.4-zip \
+    php8.4-xdebug \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 COPY ./php.ini /etc/php/8.4/fpm/conf.d/90-php.ini
 COPY ./php.ini /etc/php/8.4/cli/conf.d/90-php.ini
+COPY ./xdebug.ini /etc/php/8.4/mods-available/xdebug.ini
 
 RUN usermod -u 2000 ubuntu
 RUN usermod -u 1000 www-data
 
-WORKDIR ${SITE_PATH}
+WORKDIR /var/www/bitrix
 
 EXPOSE 9000

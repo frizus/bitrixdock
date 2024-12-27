@@ -1,7 +1,5 @@
 FROM phpdockerio/php:8.2-fpm
 
-ARG SITE_PATH
-
 LABEL org.opencontainers.image.source="https://github.com/frizus/bitrixdock"
 
 RUN apt-get update \
@@ -25,6 +23,6 @@ COPY ./php.ini /etc/php/8.2/cli/conf.d/90-php.ini
 
 RUN usermod -u 1000 www-data
 
-WORKDIR ${SITE_PATH}
+WORKDIR /var/www/bitrix
 
 EXPOSE 9000
