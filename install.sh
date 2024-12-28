@@ -16,3 +16,4 @@ echo "Запуск"
 docker compose down --remove-orphans
 docker compose build
 docker compose up -d
+docker compose exec php composer install --working-dir=/var/www/bitrix
