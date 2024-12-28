@@ -29,7 +29,7 @@ http://localhost
 
     * `Use path mappings (select if the server is remote or symlinks are used)`
         * File/Directory: Project files -> первый (он там единственный в Project files) -> www/ -> public/
-        * Absolute path on the server: `/var/www/bitrix`
+        * Absolute path on the server: `/var/www/bitrix/public`
 
 3.
 * `PHP | Debug`

@@ -9,7 +9,8 @@ sudo chown -R :www-data ./www && chmod -R 2775 ./www
 
 echo "Копирование файла .env"
 cp -n .env.default .env
-sed -i 's,SITE_PATH=.*,SITE_PATH='"$(pwd)"'\/www\/public\/,' ./.env
+sed -i 's,SITE_PATH=.*,SITE_PATH='"$(pwd)"'\/www\/,' ./.env
+sed -i 's,PUBLIC_PATH=.*,PUBLIC_PATH='"$(pwd)"'\/www\/public\/,' ./.env
 
 echo "Запуск"
 docker compose down --remove-orphans
